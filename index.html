@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Sistema Penal Acusatorio Colombiano (SPA)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Variables CSS para fácil personalización --- */
+        :root {
+            --primary-color: #0056b3; /* Azul oscuro principal */
+            --secondary-color: #007bff; /* Azul más brillante para acentos */
+            --light-color: #f8f9fa; /* Gris muy claro para fondos */
+            --dark-color: #343a40; /* Gris oscuro para texto */
+            --text-color: #212529; /* Color de texto principal */
+            --border-color: #dee2e6; /* Color de borde sutil */
+            --header-bg: #ffffff; /* Fondo blanco para cabecera */
+            --footer-bg: var(--dark-color);
+            --footer-text: var(--light-color);
+            --nav-bg: var(--light-color);
+            --button-bg: var(--primary-color);
+            --button-hover-bg: var(--secondary-color);
+            --button-text: #ffffff;
+            --link-color: var(--primary-color);
+            --link-hover-color: var(--secondary-color);
+            --font-primary: 'Roboto', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+        }
+
+        /* --- Reseteo Básico y Estilos Generales --- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces internos */
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: #ffffff; /* Fondo general blanco */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-secondary);
+            color: var(--dark-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; margin-top: 1.5rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.5rem; color: var(--primary-color); }
+        h4 { font-size: 1.2rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none; /* Quitar subrayado por defecto */
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline; /* Subrayar al pasar el mouse */
+        }
+
+        ul {
+            list-style: none; /* Quitar viñetas por defecto */
+            padding-left: 0; /* Quitar padding por defecto */
+        }
+
+        img {
+            max-width: 100%; /* Asegura que las imágenes no se desborden */
+            height: auto;
+            display: block; /* Evita espacio extra debajo de las imágenes */
+        }
+
+        /* --- Contenedor Principal (opcional, para centrar contenido) --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto; /* Centra el contenedor */
+            padding: 0 20px; /* Espacio a los lados */
+        }
+
+        /* --- Cabecera (Header) --- */
+        header {
+            background-color: var(--header-bg);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            /* Usar Flexbox para alinear logo y título si es necesario */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Ajustar según diseño del logo */
+            flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+            padding-left: 20px; /* Añadir padding para que no pegue al borde */
+            padding-right: 20px;
+        }
+
+        header h1 {
+            font-size: 1.8rem; /* Ajustar tamaño para cabecera */
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #6c757d; /* Gris secundario */
+            margin-bottom: 0;
+        }
+
+        /* --- Menú de Navegación (Nav) --- */
+        nav {
+            background-color: var(--nav-bg);
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; /* Hacer que el menú se quede fijo al hacer scroll */
+            top: 0;
+            z-index: 1000; /* Asegurar que esté por encima de otro contenido */
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        nav ul {
+            display: flex; /* Menú horizontal en pantallas grandes */
+            justify-content: center; /* Centrar elementos del menú */
+            flex-wrap: wrap; /* Permitir que el menú se ajuste en pantallas pequeñas */
+        }
+
+        nav ul li {
+            margin: 0 0.8rem; /* Espacio entre elementos del menú */
+        }
+
+        nav ul li a {
+            color: var(--dark-color);
+            font-weight: bold;
+            padding: 0.5rem 0;
+            position: relative; /* Para el efecto de subrayado */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            text-decoration: none; /* Quitar subrayado al pasar el mouse */
+        }
+
+        /* Efecto de subrayado animado (opcional) */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Contenido Principal (Main) --- */
+        main {
+            padding: 2rem 20px; /* Espacio interno */
+            max-width: 1100px; /* Limitar ancho para legibilidad */
+            margin: 2rem auto; /* Centrar y dar espacio arriba/abajo */
+        }
+
+        section {
+            margin-bottom: 3rem; /* Espacio entre secciones */
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color); /* Separador sutil */
+        }
+
+        section:last-of-type {
+            border-bottom: none; /* No poner borde en la última sección */
+            margin-bottom: 0;
+        }
+
+        /* --- Estilos para elementos específicos (Audiencias, Incidentes) --- */
+        .audiencia-item,
+        .incidente-item {
+            background-color: var(--light-color);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .audiencia-item:hover,
+        .incidente-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada al pasar el mouse */
+        }
+
+        .audiencia-item h3,
+        .incidente-item h3 {
+            margin-top: 0; /* Quitar margen superior del h3 dentro del item */
+            margin-bottom: 1rem;
+        }
+
+        .interaccion-placeholder {
+            font-style: italic;
+            color: #555;
+            background-color: #e9ecef; /* Fondo ligeramente diferente */
+            padding: 0.8rem 1rem;
+            border-left: 4px solid var(--secondary-color);
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        /* --- Botones --- */
+        .button,
+        button, /* Aplicar a botones nativos también */
+        input[type="submit"] { /* Aplicar a botones de formulario */
+            display: inline-block; /* Comportamiento de bloque pero en línea */
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 0.75rem 1.5rem; /* Espaciado interno */
+            border: none;
+            border-radius: 5px; /* Bordes redondeados */
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer; /* Cursor de mano */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 0.5rem; /* Espacio superior */
+        }
+
+        .button:hover,
+        button:hover,
+        input[type="submit"]:hover {
+            background-color: var(--button-hover-bg);
+            color: var(--button-text);
+            text-decoration: none; /* Asegurar que no haya subrayado */
+            transform: translateY(-2px); /* Efecto ligero de elevación */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Botón secundario (opcional) */
+        .button-secondary {
+            background-color: #6c757d; /* Gris */
+            color: #ffffff;
+        }
+
+        .button-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        /* --- Pie de Página (Footer) --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 2.5rem 20px;
+            text-align: center;
+            margin-top: 3rem; /* Espacio antes del footer */
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--footer-text);
+            text-decoration: underline;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            color: #adb5bd; /* Color más claro al pasar el mouse */
+        }
+
+        /* --- Responsividad --- */
+
+        /* Estilos para pantallas medianas (tablets) */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.4rem; }
+            main { padding: 1.5rem 15px; margin: 1.5rem auto; }
+        }
+
+        /* Estilos para pantallas pequeñas (móviles) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Apilar logo/título y descripción */
+                text-align: center;
+            }
+            header h1 { font-size: 1.6rem; }
+            header p { font-size: 0.85rem; }
+
+            nav ul {
+                flex-direction: column; /* Apilar elementos del menú */
+                align-items: center; /* Centrar elementos apilados */
+            }
+
+            nav ul li {
+                margin: 0.5rem 0; /* Espacio vertical entre elementos */
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+
+            main { padding: 1rem 10px; margin: 1rem auto; }
+            section { margin-bottom: 2rem; padding-bottom: 1rem; }
+
+            .button, button, input[type="submit"] {
+                width: 100%; /* Hacer botones de ancho completo para fácil toque */
+                padding: 0.8rem 1rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div> <h1>El Sistema Penal Acusatorio Colombiano (SPA)</h1>
+            <p>El proceso en el Sistema Penal Acusatorio Colombiano</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#audiencias">Audiencias del Proceso Penal</a></li>
+            <li><a href="#actuaciones">Actuaciones Incidentales</a></li>
+            <li><a href="#simulacion">Participa en un Juicio Simulado</a></li>
+            <li><a href="#recursos">Recursos y Guías</a></li>
+            <li><a href="#nosotros">Sobre Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <section id="introduccion">
+            <h2>Introducción al Sistema Penal Acusatorio Colombiano</h2>
+            <p>
+                El Sistema Penal Acusatorio es un modelo basado en la oralidad, la
+                publicidad, la contradicción y la inmediación. En este sistema, las partes en
+                un juicio tienen una mayor participación activa y la decisión final sobre la
+                culpabilidad o inocencia se toma en una audiencia pública.
+            </p>
+            <a href="#audiencias" class="button">Explora las Audiencias</a>
+        </section>
+
+        <section id="audiencias">
+            <h2>Audiencias más importantes</h2>
+            <p>Selecciona una audiencia para conocer sus detalles, objetivos y ejemplos de interacción:</p>
+
+            <div class="audiencia-item">
+                <h3>Audiencia de Formulación de Imputación</h3>
+                <p><strong>Descripción:</strong> Esta audiencia es un acto de comunicación en el que la Fiscalía le da a conocer al indiciado que en su contra se adelanta una indagación por unos hechos determinados y le realiza una imputación de cargos. El imputado tiene la posibilidad de allanarse a los cargos.</p>
+                <p><strong>Objetivo:</strong> Formulación de cargos, interrupción de la prescripción e iniciación del proceso penal.</p>
+                <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Ejemplo de cómo un fiscal podría estructurar su intervención. <em>(Contenido interactivo/ejemplo iría aquí)</em>
+                    <button class="button button-secondary">Ver Ejemplo</button> </div>
+            </div>
+
+            <div class="audiencia-item">
+                <h3>Audiencia de Formulación de Acusación</h3>
+                <p><strong>Descripción:</strong> En esta audiencia las parte e intervinientes tienen la posibilidad de pronunciarse respecto de causales de incompetencia, impedimento, recusación o nulidad; se reconoce la calidad de víctima; y la Fiscalía realiza el descubrimiento de todos sus elementos materiales probatorios.</p>
+                <p><strong>Objetivo:</strong> Concretar la acusación y conocer los elementos materiales probatorios recaudados por la Fiscalía.</p>
+                <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Ejemplo del desarrollo de la audiencia. <em>(Contenido interactivo/ejemplo iría aquí)</em>
+                     <button class="button button-secondary">Ver Desarrollo</button>
+                </div>
+            </div>
+
+             <div class="audiencia-item">
+                <h3>Audiencia Preparatoria</h3>
+                <p><strong>Descripción:</strong> Se realiza el descubrimiento probatorio por la defensa, las partes solicitan los medios probatorios que harán valer en el juicio oral y el juez decreta las que considera pertinentes, conducentes y útiles.</p>
+                <p><strong>Objetivo:</strong> Organizar el desarrollo probatorio de la audiencia de juicio oral.</p>
+                <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Ejemplo de solicitud de decreto de pruebas y de solitudes de exclusión, rechazo o inadmisión de pruebas. <em>(Contenido interactivo/ejemplo iría aquí)</em>
+                     <button class="button button-secondary">Ver Ejemplo</button>
+                </div>
+            </div>
+
+             <div class="audiencia-item">
+                <h3>Audiencia de Juicio Oral</h3>
+                <p><strong>Descripción:</strong> Es la audiencia en la que se presentan las pruebas y argumentos para determinar la culpabilidad o inocencia del acusado.</p>
+                <p><strong>Objetivo:</strong> Debate probatorio, alegatos de inicio y alegatos de cierre. El juez da el sentido del fallo.</p>
+                <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Ejemplo de un juicio oral donde el visitante puede escoger si actúa como Fiscal o abogado de la defensa. <em>(Simulación/interacción iría aquí)</em>
+                     <a href="#simulacion" class="button">Participar como Fiscal</a> <a href="#simulacion" class="button button-secondary">Participar como Defensa</a>
+                </div>
+            </div>
+
+             <div class="audiencia-item">
+                <h3>Audiencia de Lectura de Sentencia</h3>
+                <p><strong>Descripción:</strong> En esta audiencia el juez lee la sentencia en la que sustenta el sentido del fallo dado al finalizar el juicio oral.</p>
+                <p><strong>Objetivo:</strong> El juez emite la sentencia tras valorar las pruebas presentadas en juicio.</p>
+                <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Los usuarios pueden ver ejemplos de cómo los argumentos presentados influyen en la sentencia. <em>(Contenido interactivo/ejemplo iría aquí)</em>
+                     <button class="button button-secondary">Ver Ejemplo</button>
+                </div>
+            </div>
+
+             <div class="audiencia-item">
+                <h3>Audiencia de Apelación</h3>
+                <p><strong>Descripción:</strong> Procedimiento donde se revisa la sentencia del tribunal de primera instancia.</p>
+                <p><strong>Objetivo:</strong> Evaluar si hubo errores de derecho que justifiquen la modificación de la sentencia.</p>
+                <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Los usuarios pueden presentar sus argumentos apelando una sentencia y ver las decisiones de los jueces. <em>(Simulación/interacción iría aquí)</em>
+                     <button class="button">Apelar Sentencia (Simulación)</button>
+                </div>
+            </div>
+            </section>
+
+        <section id="actuaciones">
+            <h2>Actuaciones incidentales más relevantes</h2>
+            <p>Estas actuaciones pueden surgir durante el proceso y son clave en su desarrollo.</p>
+
+             <div class="incidente-item">
+                <h3>Incidente de Nulidad</h3>
+                <p><strong>Descripción:</strong> Se plantea cuando se considera que una actuación procesal fue ilegal o inapropiada.</p>
+                 <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Los usuarios podrán elegir presentar una solicitud de nulidad en un caso hipotético y ver los resultados. <em>(Simulación/interacción iría aquí)</em>
+                    <button class="button">Presentar Nulidad (Simulación)</button>
+                </div>
+            </div>
+
+             <div class="incidente-item">
+                <h3>Incidente de Reparación Integral</h3>
+                <p><strong>Descripción:</strong> Procedimiento para valorar los daños y perjuicios ocasionados por un delito.</p>
+                 <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> Los visitantes podrán intentar determinar los daños y argumentar sobre su causación. <em>(Simulación/interacción iría aquí)</em>
+                     <button class="button">Argumentar Daños (Simulación)</button>
+                 </div>
+            </div>
+        </section>
+
+        <section id="simulacion">
+            <h2>Participa en un juicio simulado</h2>
+            <p>Desarrolla tus habilidades de argumentación jurídica participando en nuestros juicios simulados.</p>
+
+            <article class="audiencia-item"> <h3>Juicio Simulado – Introducción</h3>
+                <p>Elige tu rol y sumérgete en un caso ficticio basado en el sistema penal acusatorio colombiano.</p>
+                <ul>
+                    <li>Roles disponibles: Fiscal, Abogado de la defensa, Juez, Testigo, Perito.</li>
+                    <li>Presenta tus argumentos estratégicos y toma decisiones en cada etapa.</li>
+                </ul>
+                 <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> <em>(Aquí iría el componente interactivo para seleccionar rol e iniciar la simulación)</em>
+                    <button class="button">Iniciar Simulación</button>
+                 </div>
+            </article>
+
+            <article> <h3>Asesoría en Tiempo Real</h3>
+                <p>Recibe sugerencias y bases legales mientras avanzas en la simulación para mejorar tu actuación.</p>
+                 <div class="interaccion-placeholder">
+                     <strong>Interacción:</strong> <em>(Indicador/espacio para mostrar la asesoría contextual)</em>
+                 </div>
+            </article>
+
+             <article>
+                <h3>Evaluación Final</h3>
+                <p>Al concluir, recibirás un análisis detallado de tu desempeño, identificando fortalezas y áreas de mejora.</p>
+                 <div class="interaccion-placeholder">
+                    <strong>Interacción:</strong> <em>(Espacio para mostrar la evaluación final y elementos de gamificación como puntos o medallas)</em>
+                 </div>
+            </article>
+        </section>
+
+        <section id="recursos">
+            <h2>Recursos y Guías</h2>
+            <p>Materiales educativos para profundizar tus conocimientos:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;"> <div class="audiencia-item" style="flex: 1 1 300px;"> <h4>Guías de Argumentación</h4>
+                    <p>Aprende a estructurar argumentos sólidos.</p>
+                    <a href="#" class="button button-secondary">Leer Guía</a>
+                </div>
+                 <div class="audiencia-item" style="flex: 1 1 300px;">
+                    <h4>Estrategias Legales</h4>
+                    <p>Descubre tácticas efectivas en juicios.</p>
+                    <a href="#" class="button button-secondary">Ver Artículos</a>
+                </div>
+                 <div class="audiencia-item" style="flex: 1 1 300px;">
+                    <h4>Videos Explicativos</h4>
+                    <p>Visualiza el proceso penal colombiano.</p>
+                    <a href="#" class="button button-secondary">Ver Videos</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros">
+            <h2>Sobre Nosotros</h2>
+            <p>Información sobre el equipo detrás de la plataforma y su misión.</p>
+            </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Formulario de contacto o información directa.</p>
+            <form action="#"> <div style="margin-bottom: 1rem;">
+                    <label for="nombre" style="display: block; margin-bottom: 0.3rem;">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;">
+                </div>
+                 <div style="margin-bottom: 1rem;">
+                    <label for="email" style="display: block; margin-bottom: 0.3rem;">Email:</label>
+                    <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;">
+                </div>
+                 <div style="margin-bottom: 1rem;">
+                    <label for="mensaje" style="display: block; margin-bottom: 0.3rem;">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                </div>
+                <button type="submit" class="button">Enviar Mensaje</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container"> <div style="margin-bottom: 1rem;">
+                <a href="#">Política de privacidad</a> |
+                <a href="#">Términos y condiciones</a> |
+                <a href="#">FAQs</a>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span>Síguenos en: </span>
+                <a href="#" aria-label="Facebook">[Icono FB]</a>
+                <a href="#" aria-label="Twitter">[Icono TW]</a>
+                <a href="#" aria-label="LinkedIn">[Icono LI]</a>
+                </div>
+            <div style="margin-bottom: 1rem;">
+                <span>Email: contacto@spa-colombia.co | Teléfono: +57 XXXXXXXX</span>
+            </div>
+            <div>
+                <span>Desarrollado por [Nombre del equipo/organización]. &copy; 2025</span>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+
+</html>
