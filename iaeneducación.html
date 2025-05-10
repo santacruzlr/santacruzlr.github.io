@@ -97,6 +97,41 @@
             font-size: 0.9em;
             color: #777;
         }
+        /* Estilos ADICIONALES para la Galería de dos columnas */
+        .galeria-contenedor {
+            display: flex; /* Habilita Flexbox */
+            flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no caben */
+            gap: 20px; /* Espacio entre los elementos de la galería */
+            margin-top: 15px;
+        }
+
+        .galeria-item {
+            flex-basis: calc(50% - 10px); /* Cada elemento ocupa el 50% del ancho menos la mitad del gap para el espaciado */
+            box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho total */
+            text-align: center; /* Centra el texto y la imagen dentro de cada item */
+            margin-bottom: 20px; /* Espacio inferior para cada item */
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            display: flex; /* Flexbox para alinear texto e imagen verticalmente si es necesario */
+            flex-direction: column; /* Apila el texto sobre la imagen (o viceversa) */
+            align-items: center; /* Centra el contenido del item */
+        }
+
+        .galeria-item p {
+            font-weight: bold;
+            margin-bottom: 10px; /* Espacio entre el texto y la imagen */
+            color: #333;
+        }
+
+        .galeria-item img {
+            width: 100%; /* La imagen ocupa todo el ancho del .galeria-item */
+            max-width: 250px; /* Un tamaño máximo para que no sean demasiado grandes */
+            height: auto; /* Mantiene la proporción de la imagen */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
@@ -172,25 +207,30 @@
 
             <div>
                 <h3>Galería de Imágenes Generadas con IA:</h3>
-                <p>A continuación, se listan temas sobre los cuales se podrían generar imágenes con IA para ilustrar conceptos clave del Estado colombiano. (<em>Nota: Deberás generar estas imágenes con alguna herramienta de IA e insertarlas aquí usando la etiqueta `<img>`</em>).</p>
-                <ul>
-                    <li>El Estado colombiano <br>
-                        <img src="imagenes/Imagen1.png" alt="Imagen generada por IA sobre El Estado colombiano" style="width:100%;max-width:300px;height:auto;margin-top:8px;border-radius:5px;border:1px solid #ddd;">
-                    </li>
-                    <li>República unitaria <br>
-                        <img src="imagenes/Imagen2.png" alt="Imagen generada por IA sobre República unitaria" style="width:100%;max-width:300px;height:auto;margin-top:8px;border-radius:5px;border:1px solid #ddd;">
-                    </li>
-                    <li>República democrática <br>
-                        <img src="imagenes/Imagen3.png" alt="Imagen generada por IA sobre República democrática" style="width:100%;max-width:300px;height:auto;margin-top:8px;border-radius:5px;border:1px solid #ddd;">
-                    </li>
-                    <li>Población <br>
-                        <img src="imagenes/Imagen4.png" alt="Imagen generada por IA sobre Población" style="width:100%;max-width:300px;height:auto;margin-top:8px;border-radius:5px;border:1px solid #ddd;">
-                    </li>
-                    <li>Fines esenciales del Estado <br>
-                        <img src="imagenes/Imagen5.png" alt="Imagen generada por IA sobre Fines esenciales del Estado" style="width:100%;max-width:300px;height:auto;margin-top:8px;border-radius:5px;border:1px solid #ddd;">
-                    </li>
-                </ul>
-                </div>
+                <p>A continuación, se presentan imágenes generadas con IA para ilustrar conceptos clave del Estado colombiano, dispuestas de dos en dos:</p>
+                <div class="galeria-contenedor">
+                    <div class="galeria-item">
+                        <p>El Estado colombiano</p>
+                        <img src="imagenes/Imagen1.png" alt="Imagen generada por IA sobre El Estado colombiano">
+                    </div>
+                    <div class="galeria-item">
+                        <p>República unitaria</p>
+                        <img src="imagenes/Imagen2.png" alt="Imagen generada por IA sobre República unitaria">
+                    </div>
+                    <div class="galeria-item">
+                        <p>República democrática</p>
+                        <img src="imagenes/Imagen3.png" alt="Imagen generada por IA sobre República democrática">
+                    </div>
+                    <div class="galeria-item">
+                        <p>Población</p>
+                        <img src="imagenes/Imagen4.png" alt="Imagen generada por IA sobre Población">
+                    </div>
+                    <div class="galeria-item">
+                        <p>Fines esenciales del Estado</p>
+                        <img src="imagenes/Imagen5.png" alt="Imagen generada por IA sobre Fines esenciales del Estado">
+                    </div>
+                    </div>
+            </div>
              </section>
 
         <footer>
